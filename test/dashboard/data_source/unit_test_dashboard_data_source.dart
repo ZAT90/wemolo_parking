@@ -6,7 +6,7 @@ import 'package:wemolo_parking/screens/dashboard/data/data_sources/dashboard_rem
 import 'package:wemolo_parking/screens/dashboard/data/model/request/request_body_parking/request_body_parking.dart';
 import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_parking/response_body_parking.dart';
 
-import 'network_service_test_mocks.mocks.dart';
+import 'data_source_test_mocks.mocks.dart';
 
 void main() {
   late MockNetworkService mockNetworkService;
