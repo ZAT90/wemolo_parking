@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wemolo_parking/core/bloc_utils/bloc_init.dart';
 import 'package:wemolo_parking/core/common/ui_items/filter_bottom_sheet.dart';
+import 'package:wemolo_parking/core/common/ui_items/misc_ui.dart';
 import 'package:wemolo_parking/core/constants/ui_constants.dart';
 import 'package:wemolo_parking/core/utils/logger.dart';
 import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_distincts/response_body_distincts.dart';
@@ -26,11 +27,19 @@ class _SummaryScreenState extends State<SummaryScreen>
     super.build(context);
     return BlocConsumer<DashboardBloc, DashboardState>(
       listenWhen: (previous, current) => current.maybeWhen(
-          loadDistinctData: (_, __) => true, orElse: () => false),
+          loadDistinctData: (_, __) => true,
+          loadDistinctInit: () => true,
+          orElse: () => false),
       listener: (context, state) {
         logger.d('listener summary: $state');
         state.whenOrNull(
+          loadDistinctInit: () {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              showSpinnerDialog(context);
+            });
+          },
           loadDistinctData: (distinctStatuses, distinctTypes) {
+            Navigator.pop(context);
             WidgetsBinding.instance.addPostFrameCallback((_) {
               _showBottomSheet(context, distinctStatuses, distinctTypes);
             });
@@ -41,7 +50,7 @@ class _SummaryScreenState extends State<SummaryScreen>
           loadSummaryListAfterAdd: (getParkingList) => true,
           orElse: () => false),
       builder: (context, state) {
-        logger.d('state in summary: $state');
+       // logger.d('state in summary: $state');
         state.whenOrNull(
           loadSummaryListAfterAdd: (getParkingList) {
             summaryList = [...?getParkingList];
@@ -53,8 +62,8 @@ class _SummaryScreenState extends State<SummaryScreen>
           child: isSummaryEmpty
               ? SizedBox(
                   height: UiConstants(context).screenHeight,
-                  child: const Center(
-                    child: Text('No Items found'),
+                  child: Center(
+                    child: noItemFound(context),
                   ),
                 )
               : Column(
@@ -86,48 +95,59 @@ class _SummaryScreenState extends State<SummaryScreen>
                     const SizedBox(
                       height: 20,
                     ),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: summaryList.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          GetAllParkingLot parkingLot = summaryList[index];
-                          return Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: ListTile(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  side: const BorderSide(color: Colors.black)),
-                              leading: CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(parkingLot.image!),
-                                radius: 25,
-                              ),
-                              title: Text(parkingLot.name!),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(parkingLot.address!),
-                                  Text(parkingLot.type!),
-                                  Text(
-                                    parkingLot.status!,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
+                    summaryList.isEmpty
+                        ? noItemFound(context)
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: summaryList.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              GetAllParkingLot parkingLot = summaryList[index];
+                              return Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      side: const BorderSide(
+                                          color: Colors.black)),
+                                  leading: CircleAvatar(
+                                    backgroundImage:
+                                        NetworkImage(parkingLot.image!),
+                                    radius: 25,
                                   ),
-                                ],
-                              ),
-                              trailing: parkingLot.isLiked!
-                                  ? const Icon(Icons.thumb_up,color: Colors.green,)
-                                  : const Icon(Icons.thumb_down,color: Colors.grey,),
-                            ),
-                          );
-                        }),
+                                  title: Text(parkingLot.name!),
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(parkingLot.address!),
+                                      Text(parkingLot.type!),
+                                      Text(
+                                        parkingLot.status!,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  trailing: parkingLot.isLiked!
+                                      ? const Icon(
+                                          Icons.thumb_up,
+                                          color: Colors.green,
+                                        )
+                                      : const Icon(
+                                          Icons.thumb_down,
+                                          color: Colors.grey,
+                                        ),
+                                ),
+                              );
+                            }),
                   ],
                 ),
         ));
       },
     );
   }
+
 
   void _showBottomSheet(
       BuildContext context,

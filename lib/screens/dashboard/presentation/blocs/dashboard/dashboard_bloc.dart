@@ -72,7 +72,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       if (selectedChoiceOfuser.contains('good'.toLowerCase())) {
         summaryListToFilter =
             summaryListToFilter.where((element) => element.isLiked!).toList();
-      } else if (selectedChoiceOfuser.contains('bad'.toLowerCase())) {
+      } 
+      else if (selectedChoiceOfuser.contains('bad'.toLowerCase())) {
         summaryListToFilter =
             summaryListToFilter.where((element) => !element.isLiked!).toList();
       }

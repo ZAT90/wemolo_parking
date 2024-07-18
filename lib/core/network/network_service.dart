@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wemolo_parking/core/constants/api_constants.dart';
@@ -233,9 +232,16 @@ class NetworkService implements NetworkMethods {
     );
   }
 
+  String testMethod(String value) {
+    print('value: $value');
+    return value;
+  }
+
   @override
   Future<NetworkResponse<T>> post<T>(
       {required String path, requestBody, Map<String, dynamic>? queryParams}) {
+    print('check post method: $path');
+    print('check post method: $requestBody');
     final request = NetworkRequest(
         type: NetworkRequestType.POST,
         path: path,

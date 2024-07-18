@@ -14,7 +14,6 @@ class LandingScreen extends StatefulWidget {
 
 class _LandingScreenState extends State<LandingScreen> {
   late PageController _pageController;
-  int currentIndex = 0;
 
   @override
   void initState() {
@@ -32,41 +31,43 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<TabBloc, TabState>(
-        
         builder: (context, state) {
-          
-          return PageView(
-            controller: _pageController,
-            onPageChanged: (index) {
-              context.read<TabBloc>().add(TabEvent.changingTabIndex(index));
-            },
+          return Stack(
             children: [
-              HomeScreen(),
-              SummaryScreen(),
-            ],
-          );
-        },
-      ),
-      bottomNavigationBar: BlocBuilder<TabBloc, TabState>(
-        builder: (context, state) {
-          logger.d('tab bloc');
-          state.whenOrNull(getTabIndex: (index) {
-            currentIndex = index;
-          },);
-          return BottomNavigationBar(
-            currentIndex: state.whenOrNull(getTabIndex: (index) => index,)?.toInt()??0,
-            onTap: (index) {
-              _pageController.jumpToPage(index);
-              context.read<TabBloc>().add(TabEvent.changingTabIndex(index));
-            },
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Homes',
+              PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  context.read<TabBloc>().add(TabEvent.changingTabIndex(index));
+                },
+                children: const [
+                  HomeScreen(),
+                  SummaryScreen(),
+                ],
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                label: 'Summary',
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: BottomNavigationBar(
+                  currentIndex: state.whenOrNull(
+                        getTabIndex: (index) => index,
+                      ) ??
+                      0,
+                  onTap: (index) {
+                    _pageController.jumpToPage(index);
+                    context
+                        .read<TabBloc>()
+                        .add(TabEvent.changingTabIndex(index));
+                  },
+                  items: const <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.car_rental),
+                      label: 'Parkings',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.list),
+                      label: 'Summary',
+                    ),
+                  ],
+                ),
               ),
             ],
           );

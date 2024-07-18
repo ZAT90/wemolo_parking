@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wemolo_parking/core/bloc_utils/bloc_init.dart';
 import 'package:wemolo_parking/core/common/ui_items/card.dart';
+import 'package:wemolo_parking/core/common/ui_items/misc_ui.dart';
 import 'package:wemolo_parking/core/common/ui_items/swiper_buttons.dart';
 import 'package:wemolo_parking/core/constants/ui_constants.dart';
 import 'package:wemolo_parking/core/utils/logger.dart';
@@ -43,20 +44,19 @@ class _HomeScreenState extends State<HomeScreen>
         orElse: () => false,
       ),
       builder: (context, state) {
-        logger.d('state in home: $state');
+       // logger.d('state in home: $state');
         return Scaffold(
             body: state.whenOrNull(
           initial: () => const Center(child: CircularProgressIndicator()),
           loadParkingData: (getParkingList) => getParkingList!.isEmpty
-              ? SizedBox(
-                  height: UiConstants(context).screenHeight,
-                  child: const Center(
-                      child: Text('No More parking lots available')))
+              ? noItemFound(context)
               : renderTinderViewParking(context, getParkingList),
         ));
       },
     );
   }
+
+ 
 
   Widget renderTinderViewParking(
       BuildContext context, List<GetAllParkingLot> getParkingLots) {
