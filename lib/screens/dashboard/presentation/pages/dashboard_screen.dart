@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wemolo_parking/core/utils/logger.dart';
 import 'package:wemolo_parking/screens/dashboard/presentation/blocs/tab/tab_bloc.dart';
 import 'package:wemolo_parking/screens/dashboard/presentation/pages/dashboard-screens/home_screen.dart';
 import 'package:wemolo_parking/screens/dashboard/presentation/pages/dashboard-screens/summary_screen.dart';
