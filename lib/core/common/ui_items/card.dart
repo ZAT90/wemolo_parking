@@ -31,9 +31,6 @@ class TinderCard extends StatelessWidget {
           Flexible(
             child: Container(
               decoration: const BoxDecoration(
-                // gradient: candidate.color,
-                //  gradient: Colors.green,
-                color: Colors.green,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10),
