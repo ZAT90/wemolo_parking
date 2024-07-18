@@ -10,10 +10,12 @@ _$ApiErrorMessageImpl _$$ApiErrorMessageImplFromJson(
         Map<String, dynamic> json) =>
     _$ApiErrorMessageImpl(
       errorMessage: json['errorMessage'] as String?,
+      statusCode: (json['statusCode'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ApiErrorMessageImplToJson(
         _$ApiErrorMessageImpl instance) =>
     <String, dynamic>{
       'errorMessage': instance.errorMessage,
+      'statusCode': instance.statusCode,
     };

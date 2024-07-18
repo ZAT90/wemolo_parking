@@ -7,6 +7,7 @@ part 'api_error_message.g.dart';
 class ApiErrorMessage with _$ApiErrorMessage {
     const factory ApiErrorMessage({
         String? errorMessage,
+        int? statusCode,
     }) = _ApiErrorMessage;
 
     factory ApiErrorMessage.fromJson(Map<String, dynamic> json) => _$ApiErrorMessageFromJson(json);

@@ -4,6 +4,7 @@ import 'package:wemolo_parking/core/constants/api_constants.dart';
 import 'package:wemolo_parking/core/network/models/network_request_body.dart';
 import 'package:wemolo_parking/core/network/models/network_response.dart';
 import 'package:wemolo_parking/core/network/network_methods.dart';
+import 'package:wemolo_parking/core/utils/connectivity_helper.dart';
 import 'package:wemolo_parking/core/utils/logger.dart';
 
 class AccessTokenResponse {
@@ -51,6 +52,7 @@ class _PreparedNetworkRequest<Model> {
 Future<NetworkResponse<Model>> executeRequest<Model>(
   _PreparedNetworkRequest preparedNetworkRequest,
 ) async {
+  ConnectivityHelper connectivityHelper = ConnectivityHelper();
   try {
     // print(
     //     '_PreparedNetworkRequest request data: ${preparedNetworkRequest.request.data}');
@@ -77,44 +79,49 @@ Future<NetworkResponse<Model>> executeRequest<Model>(
     // print('response _preparedNetworkRequest: ${response.data}');
     return NetworkResponse.ok(response.data);
   } on DioException catch (error) {
+    if (!await connectivityHelper.isConnected()) {
+      return const NetworkResponse.noInternet(
+          "No internet connection. Please check your network settings.", 000);
+    }
     print('error: ${error}');
     final errorText = error.toString();
     if (error.requestOptions.cancelToken != null &&
         error.requestOptions.cancelToken!.isCancelled) {
-      return NetworkResponse.noData(errorText);
+      return NetworkResponse.noData(errorText, 001);
     }
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.receiveTimeout:
       case DioExceptionType.sendTimeout:
         return const NetworkResponse.noData(
-            "Connection timeout. Please try again.");
+            "Connection timeout. Please try again.", 001);
       case DioExceptionType.badResponse:
         logger.d('badResponse detected');
         switch (error.response?.statusCode) {
           case 400:
-            return NetworkResponse.badRequest(errorText);
+            return NetworkResponse.badRequest(errorText, 400);
           case 401:
-            return NetworkResponse.noAuth(errorText);
+            return NetworkResponse.noAuth(errorText, 401);
           case 403:
-            return NetworkResponse.noAccess(errorText);
+            return NetworkResponse.noAccess(errorText, 403);
           case 404:
-            return NetworkResponse.notFound(errorText);
+            return NetworkResponse.notFound(errorText, 404);
           case 409:
-            return NetworkResponse.conflict(errorText);
+            return NetworkResponse.conflict(errorText, 409);
           default:
-            return NetworkResponse.noData(errorText);
+            return NetworkResponse.noData(errorText, 001);
         }
       case DioExceptionType.cancel:
-        return const NetworkResponse.noData("Request was cancelled.");
+        return const NetworkResponse.noData("Request was cancelled.", 001);
       case DioExceptionType.unknown:
         if (error.message!.contains("SocketException")) {
-          return const NetworkResponse.noData(
-              "No internet connection. Please check your network settings.");
+          return const NetworkResponse.noInternet(
+              "No internet connection. Please check your network settings.",
+              000);
         }
-        return NetworkResponse.noData(errorText);
+        return NetworkResponse.noData(errorText, 001);
       default:
-        return NetworkResponse.noData(errorText);
+        return NetworkResponse.noData(errorText, 001);
     }
     // switch (error.response?.statusCode) {
     //   case 400:
@@ -131,7 +138,7 @@ Future<NetworkResponse<Model>> executeRequest<Model>(
     //     return NetworkResponse.noData(errorText);
     // }
   } catch (error) {
-    return NetworkResponse.noData(error.toString());
+    return NetworkResponse.noData(error.toString(), 001);
   }
 }
 
@@ -267,27 +274,3 @@ class NetworkService implements NetworkMethods {
     );
   }
 }
-
-// Future<NetworkResponse<Model>> execute<Model>(
-//   NetworkRequest request,
-//   Model Function(Map<String, dynamic>) parser, {
-//   ProgressCallback? onSendProgress = null,
-//   ProgressCallback? onReceiveProgress = null,
-// }) async {
-//   if (_dio == null) {
-//     _dio = await _getDefaultDioClient();
-//   }
-//   final req = _PreparedNetworkRequest<Model>(
-//     request,
-//     parser,
-//     _dio!,
-//     {..._headers, ...(request.headers ?? {})},
-//     onSendProgress,
-//     onReceiveProgress,
-//   );
-//   final result = await compute(
-//     executeRequest<Model>,
-//     req,
-//   );
-//   return result;
-// }

@@ -20,36 +20,39 @@ mixin _$NetworkResponse<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$NetworkResponse<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +79,7 @@ mixin _$NetworkResponse<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +92,7 @@ mixin _$NetworkResponse<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -178,12 +184,13 @@ class _$OkImpl<Model> implements Ok<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
     return ok(data);
   }
@@ -193,12 +200,13 @@ class _$OkImpl<Model> implements Ok<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
     return ok?.call(data);
   }
@@ -208,12 +216,13 @@ class _$OkImpl<Model> implements Ok<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -233,6 +242,7 @@ class _$OkImpl<Model> implements Ok<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return ok(this);
   }
@@ -248,6 +258,7 @@ class _$OkImpl<Model> implements Ok<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return ok?.call(this);
   }
@@ -263,6 +274,7 @@ class _$OkImpl<Model> implements Ok<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -349,12 +361,13 @@ class _$InvalidParametersImpl<Model> implements InvalidParameters<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
     return invalidParameters(message);
   }
@@ -364,12 +377,13 @@ class _$InvalidParametersImpl<Model> implements InvalidParameters<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
     return invalidParameters?.call(message);
   }
@@ -379,12 +393,13 @@ class _$InvalidParametersImpl<Model> implements InvalidParameters<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (invalidParameters != null) {
@@ -404,6 +419,7 @@ class _$InvalidParametersImpl<Model> implements InvalidParameters<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return invalidParameters(this);
   }
@@ -419,6 +435,7 @@ class _$InvalidParametersImpl<Model> implements InvalidParameters<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return invalidParameters?.call(this);
   }
@@ -434,6 +451,7 @@ class _$InvalidParametersImpl<Model> implements InvalidParameters<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (invalidParameters != null) {
@@ -459,7 +477,7 @@ abstract class _$$NoAuthImplCopyWith<Model, $Res> {
           _$NoAuthImpl<Model> value, $Res Function(_$NoAuthImpl<Model>) then) =
       __$$NoAuthImplCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int statusCode});
 }
 
 /// @nodoc
@@ -474,12 +492,17 @@ class __$$NoAuthImplCopyWithImpl<Model, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = null,
   }) {
     return _then(_$NoAuthImpl<Model>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -487,14 +510,16 @@ class __$$NoAuthImplCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$NoAuthImpl<Model> implements NoAuth<Model> {
-  const _$NoAuthImpl(this.message);
+  const _$NoAuthImpl(this.message, this.statusCode);
 
   @override
   final String message;
+  @override
+  final int statusCode;
 
   @override
   String toString() {
-    return 'NetworkResponse<$Model>.noAuth(message: $message)';
+    return 'NetworkResponse<$Model>.noAuth(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -502,11 +527,13 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoAuthImpl<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -519,14 +546,15 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
-    return noAuth(message);
+    return noAuth(message, statusCode);
   }
 
   @override
@@ -534,14 +562,15 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
-    return noAuth?.call(message);
+    return noAuth?.call(message, statusCode);
   }
 
   @override
@@ -549,16 +578,17 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (noAuth != null) {
-      return noAuth(message);
+      return noAuth(message, statusCode);
     }
     return orElse();
   }
@@ -574,6 +604,7 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return noAuth(this);
   }
@@ -589,6 +620,7 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return noAuth?.call(this);
   }
@@ -604,6 +636,7 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (noAuth != null) {
@@ -614,9 +647,11 @@ class _$NoAuthImpl<Model> implements NoAuth<Model> {
 }
 
 abstract class NoAuth<Model> implements NetworkResponse<Model> {
-  const factory NoAuth(final String message) = _$NoAuthImpl<Model>;
+  const factory NoAuth(final String message, final int statusCode) =
+      _$NoAuthImpl<Model>;
 
   String get message;
+  int get statusCode;
   @JsonKey(ignore: true)
   _$$NoAuthImplCopyWith<Model, _$NoAuthImpl<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -628,7 +663,7 @@ abstract class _$$NoAccessImplCopyWith<Model, $Res> {
           $Res Function(_$NoAccessImpl<Model>) then) =
       __$$NoAccessImplCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int statusCode});
 }
 
 /// @nodoc
@@ -643,12 +678,17 @@ class __$$NoAccessImplCopyWithImpl<Model, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = null,
   }) {
     return _then(_$NoAccessImpl<Model>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -656,14 +696,16 @@ class __$$NoAccessImplCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$NoAccessImpl<Model> implements NoAccess<Model> {
-  const _$NoAccessImpl(this.message);
+  const _$NoAccessImpl(this.message, this.statusCode);
 
   @override
   final String message;
+  @override
+  final int statusCode;
 
   @override
   String toString() {
-    return 'NetworkResponse<$Model>.noAccess(message: $message)';
+    return 'NetworkResponse<$Model>.noAccess(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -671,11 +713,13 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoAccessImpl<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -689,14 +733,15 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
-    return noAccess(message);
+    return noAccess(message, statusCode);
   }
 
   @override
@@ -704,14 +749,15 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
-    return noAccess?.call(message);
+    return noAccess?.call(message, statusCode);
   }
 
   @override
@@ -719,16 +765,17 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (noAccess != null) {
-      return noAccess(message);
+      return noAccess(message, statusCode);
     }
     return orElse();
   }
@@ -744,6 +791,7 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return noAccess(this);
   }
@@ -759,6 +807,7 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return noAccess?.call(this);
   }
@@ -774,6 +823,7 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (noAccess != null) {
@@ -784,9 +834,11 @@ class _$NoAccessImpl<Model> implements NoAccess<Model> {
 }
 
 abstract class NoAccess<Model> implements NetworkResponse<Model> {
-  const factory NoAccess(final String message) = _$NoAccessImpl<Model>;
+  const factory NoAccess(final String message, final int statusCode) =
+      _$NoAccessImpl<Model>;
 
   String get message;
+  int get statusCode;
   @JsonKey(ignore: true)
   _$$NoAccessImplCopyWith<Model, _$NoAccessImpl<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -798,7 +850,7 @@ abstract class _$$BadRequestImplCopyWith<Model, $Res> {
           $Res Function(_$BadRequestImpl<Model>) then) =
       __$$BadRequestImplCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int statusCode});
 }
 
 /// @nodoc
@@ -813,12 +865,17 @@ class __$$BadRequestImplCopyWithImpl<Model, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = null,
   }) {
     return _then(_$BadRequestImpl<Model>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -826,14 +883,16 @@ class __$$BadRequestImplCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$BadRequestImpl<Model> implements BadRequest<Model> {
-  const _$BadRequestImpl(this.message);
+  const _$BadRequestImpl(this.message, this.statusCode);
 
   @override
   final String message;
+  @override
+  final int statusCode;
 
   @override
   String toString() {
-    return 'NetworkResponse<$Model>.badRequest(message: $message)';
+    return 'NetworkResponse<$Model>.badRequest(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -841,11 +900,13 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BadRequestImpl<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -859,14 +920,15 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
-    return badRequest(message);
+    return badRequest(message, statusCode);
   }
 
   @override
@@ -874,14 +936,15 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
-    return badRequest?.call(message);
+    return badRequest?.call(message, statusCode);
   }
 
   @override
@@ -889,16 +952,17 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
-      return badRequest(message);
+      return badRequest(message, statusCode);
     }
     return orElse();
   }
@@ -914,6 +978,7 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return badRequest(this);
   }
@@ -929,6 +994,7 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return badRequest?.call(this);
   }
@@ -944,6 +1010,7 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -954,9 +1021,11 @@ class _$BadRequestImpl<Model> implements BadRequest<Model> {
 }
 
 abstract class BadRequest<Model> implements NetworkResponse<Model> {
-  const factory BadRequest(final String message) = _$BadRequestImpl<Model>;
+  const factory BadRequest(final String message, final int statusCode) =
+      _$BadRequestImpl<Model>;
 
   String get message;
+  int get statusCode;
   @JsonKey(ignore: true)
   _$$BadRequestImplCopyWith<Model, _$BadRequestImpl<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -968,7 +1037,7 @@ abstract class _$$NotFoundImplCopyWith<Model, $Res> {
           $Res Function(_$NotFoundImpl<Model>) then) =
       __$$NotFoundImplCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int statusCode});
 }
 
 /// @nodoc
@@ -983,12 +1052,17 @@ class __$$NotFoundImplCopyWithImpl<Model, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = null,
   }) {
     return _then(_$NotFoundImpl<Model>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -996,14 +1070,16 @@ class __$$NotFoundImplCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$NotFoundImpl<Model> implements NotFound<Model> {
-  const _$NotFoundImpl(this.message);
+  const _$NotFoundImpl(this.message, this.statusCode);
 
   @override
   final String message;
+  @override
+  final int statusCode;
 
   @override
   String toString() {
-    return 'NetworkResponse<$Model>.notFound(message: $message)';
+    return 'NetworkResponse<$Model>.notFound(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -1011,11 +1087,13 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotFoundImpl<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -1029,14 +1107,15 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
-    return notFound(message);
+    return notFound(message, statusCode);
   }
 
   @override
@@ -1044,14 +1123,15 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
-    return notFound?.call(message);
+    return notFound?.call(message, statusCode);
   }
 
   @override
@@ -1059,16 +1139,17 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (notFound != null) {
-      return notFound(message);
+      return notFound(message, statusCode);
     }
     return orElse();
   }
@@ -1084,6 +1165,7 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return notFound(this);
   }
@@ -1099,6 +1181,7 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return notFound?.call(this);
   }
@@ -1114,6 +1197,7 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -1124,9 +1208,11 @@ class _$NotFoundImpl<Model> implements NotFound<Model> {
 }
 
 abstract class NotFound<Model> implements NetworkResponse<Model> {
-  const factory NotFound(final String message) = _$NotFoundImpl<Model>;
+  const factory NotFound(final String message, final int statusCode) =
+      _$NotFoundImpl<Model>;
 
   String get message;
+  int get statusCode;
   @JsonKey(ignore: true)
   _$$NotFoundImplCopyWith<Model, _$NotFoundImpl<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1138,7 +1224,7 @@ abstract class _$$ConflictImplCopyWith<Model, $Res> {
           $Res Function(_$ConflictImpl<Model>) then) =
       __$$ConflictImplCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int statusCode});
 }
 
 /// @nodoc
@@ -1153,12 +1239,17 @@ class __$$ConflictImplCopyWithImpl<Model, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = null,
   }) {
     return _then(_$ConflictImpl<Model>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1166,14 +1257,16 @@ class __$$ConflictImplCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$ConflictImpl<Model> implements Conflict<Model> {
-  const _$ConflictImpl(this.message);
+  const _$ConflictImpl(this.message, this.statusCode);
 
   @override
   final String message;
+  @override
+  final int statusCode;
 
   @override
   String toString() {
-    return 'NetworkResponse<$Model>.conflict(message: $message)';
+    return 'NetworkResponse<$Model>.conflict(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -1181,11 +1274,13 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConflictImpl<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -1199,14 +1294,15 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
-    return conflict(message);
+    return conflict(message, statusCode);
   }
 
   @override
@@ -1214,14 +1310,15 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
-    return conflict?.call(message);
+    return conflict?.call(message, statusCode);
   }
 
   @override
@@ -1229,16 +1326,17 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (conflict != null) {
-      return conflict(message);
+      return conflict(message, statusCode);
     }
     return orElse();
   }
@@ -1254,6 +1352,7 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return conflict(this);
   }
@@ -1269,6 +1368,7 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return conflict?.call(this);
   }
@@ -1284,6 +1384,7 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (conflict != null) {
@@ -1294,9 +1395,11 @@ class _$ConflictImpl<Model> implements Conflict<Model> {
 }
 
 abstract class Conflict<Model> implements NetworkResponse<Model> {
-  const factory Conflict(final String message) = _$ConflictImpl<Model>;
+  const factory Conflict(final String message, final int statusCode) =
+      _$ConflictImpl<Model>;
 
   String get message;
+  int get statusCode;
   @JsonKey(ignore: true)
   _$$ConflictImplCopyWith<Model, _$ConflictImpl<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1308,7 +1411,7 @@ abstract class _$$NoDataImplCopyWith<Model, $Res> {
           _$NoDataImpl<Model> value, $Res Function(_$NoDataImpl<Model>) then) =
       __$$NoDataImplCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int statusCode});
 }
 
 /// @nodoc
@@ -1323,12 +1426,17 @@ class __$$NoDataImplCopyWithImpl<Model, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = null,
   }) {
     return _then(_$NoDataImpl<Model>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1336,14 +1444,16 @@ class __$$NoDataImplCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$NoDataImpl<Model> implements NoData<Model> {
-  const _$NoDataImpl(this.message);
+  const _$NoDataImpl(this.message, this.statusCode);
 
   @override
   final String message;
+  @override
+  final int statusCode;
 
   @override
   String toString() {
-    return 'NetworkResponse<$Model>.noData(message: $message)';
+    return 'NetworkResponse<$Model>.noData(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -1351,11 +1461,13 @@ class _$NoDataImpl<Model> implements NoData<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoDataImpl<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -1368,14 +1480,15 @@ class _$NoDataImpl<Model> implements NoData<Model> {
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
     required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) noData,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
   }) {
-    return noData(message);
+    return noData(message, statusCode);
   }
 
   @override
@@ -1383,14 +1496,15 @@ class _$NoDataImpl<Model> implements NoData<Model> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
     TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? noData,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
   }) {
-    return noData?.call(message);
+    return noData?.call(message, statusCode);
   }
 
   @override
@@ -1398,16 +1512,17 @@ class _$NoDataImpl<Model> implements NoData<Model> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
     TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? noData,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
     required TResult orElse(),
   }) {
     if (noData != null) {
-      return noData(message);
+      return noData(message, statusCode);
     }
     return orElse();
   }
@@ -1423,6 +1538,7 @@ class _$NoDataImpl<Model> implements NoData<Model> {
     required TResult Function(NotFound<Model> value) notFound,
     required TResult Function(Conflict<Model> value) conflict,
     required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
   }) {
     return noData(this);
   }
@@ -1438,6 +1554,7 @@ class _$NoDataImpl<Model> implements NoData<Model> {
     TResult? Function(NotFound<Model> value)? notFound,
     TResult? Function(Conflict<Model> value)? conflict,
     TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
   }) {
     return noData?.call(this);
   }
@@ -1453,6 +1570,7 @@ class _$NoDataImpl<Model> implements NoData<Model> {
     TResult Function(NotFound<Model> value)? notFound,
     TResult Function(Conflict<Model> value)? conflict,
     TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -1463,10 +1581,199 @@ class _$NoDataImpl<Model> implements NoData<Model> {
 }
 
 abstract class NoData<Model> implements NetworkResponse<Model> {
-  const factory NoData(final String message) = _$NoDataImpl<Model>;
+  const factory NoData(final String message, final int statusCode) =
+      _$NoDataImpl<Model>;
 
   String get message;
+  int get statusCode;
   @JsonKey(ignore: true)
   _$$NoDataImplCopyWith<Model, _$NoDataImpl<Model>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NoInternetImplCopyWith<Model, $Res> {
+  factory _$$NoInternetImplCopyWith(_$NoInternetImpl<Model> value,
+          $Res Function(_$NoInternetImpl<Model>) then) =
+      __$$NoInternetImplCopyWithImpl<Model, $Res>;
+  @useResult
+  $Res call({String message, int statusCode});
+}
+
+/// @nodoc
+class __$$NoInternetImplCopyWithImpl<Model, $Res>
+    extends _$NetworkResponseCopyWithImpl<Model, $Res, _$NoInternetImpl<Model>>
+    implements _$$NoInternetImplCopyWith<Model, $Res> {
+  __$$NoInternetImplCopyWithImpl(_$NoInternetImpl<Model> _value,
+      $Res Function(_$NoInternetImpl<Model>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+    Object? statusCode = null,
+  }) {
+    return _then(_$NoInternetImpl<Model>(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NoInternetImpl<Model> implements NoInternet<Model> {
+  const _$NoInternetImpl(this.message, this.statusCode);
+
+  @override
+  final String message;
+  @override
+  final int statusCode;
+
+  @override
+  String toString() {
+    return 'NetworkResponse<$Model>.noInternet(message: $message, statusCode: $statusCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetImpl<Model> &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NoInternetImplCopyWith<Model, _$NoInternetImpl<Model>> get copyWith =>
+      __$$NoInternetImplCopyWithImpl<Model, _$NoInternetImpl<Model>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Model data) ok,
+    required TResult Function(String message) invalidParameters,
+    required TResult Function(String message, int statusCode) noAuth,
+    required TResult Function(String message, int statusCode) noAccess,
+    required TResult Function(String message, int statusCode) badRequest,
+    required TResult Function(String message, int statusCode) notFound,
+    required TResult Function(String message, int statusCode) conflict,
+    required TResult Function(String message, int statusCode) noData,
+    required TResult Function(String message, int statusCode) noInternet,
+  }) {
+    return noInternet(message, statusCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Model data)? ok,
+    TResult? Function(String message)? invalidParameters,
+    TResult? Function(String message, int statusCode)? noAuth,
+    TResult? Function(String message, int statusCode)? noAccess,
+    TResult? Function(String message, int statusCode)? badRequest,
+    TResult? Function(String message, int statusCode)? notFound,
+    TResult? Function(String message, int statusCode)? conflict,
+    TResult? Function(String message, int statusCode)? noData,
+    TResult? Function(String message, int statusCode)? noInternet,
+  }) {
+    return noInternet?.call(message, statusCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Model data)? ok,
+    TResult Function(String message)? invalidParameters,
+    TResult Function(String message, int statusCode)? noAuth,
+    TResult Function(String message, int statusCode)? noAccess,
+    TResult Function(String message, int statusCode)? badRequest,
+    TResult Function(String message, int statusCode)? notFound,
+    TResult Function(String message, int statusCode)? conflict,
+    TResult Function(String message, int statusCode)? noData,
+    TResult Function(String message, int statusCode)? noInternet,
+    required TResult orElse(),
+  }) {
+    if (noInternet != null) {
+      return noInternet(message, statusCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Ok<Model> value) ok,
+    required TResult Function(InvalidParameters<Model> value) invalidParameters,
+    required TResult Function(NoAuth<Model> value) noAuth,
+    required TResult Function(NoAccess<Model> value) noAccess,
+    required TResult Function(BadRequest<Model> value) badRequest,
+    required TResult Function(NotFound<Model> value) notFound,
+    required TResult Function(Conflict<Model> value) conflict,
+    required TResult Function(NoData<Model> value) noData,
+    required TResult Function(NoInternet<Model> value) noInternet,
+  }) {
+    return noInternet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Ok<Model> value)? ok,
+    TResult? Function(InvalidParameters<Model> value)? invalidParameters,
+    TResult? Function(NoAuth<Model> value)? noAuth,
+    TResult? Function(NoAccess<Model> value)? noAccess,
+    TResult? Function(BadRequest<Model> value)? badRequest,
+    TResult? Function(NotFound<Model> value)? notFound,
+    TResult? Function(Conflict<Model> value)? conflict,
+    TResult? Function(NoData<Model> value)? noData,
+    TResult? Function(NoInternet<Model> value)? noInternet,
+  }) {
+    return noInternet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Ok<Model> value)? ok,
+    TResult Function(InvalidParameters<Model> value)? invalidParameters,
+    TResult Function(NoAuth<Model> value)? noAuth,
+    TResult Function(NoAccess<Model> value)? noAccess,
+    TResult Function(BadRequest<Model> value)? badRequest,
+    TResult Function(NotFound<Model> value)? notFound,
+    TResult Function(Conflict<Model> value)? conflict,
+    TResult Function(NoData<Model> value)? noData,
+    TResult Function(NoInternet<Model> value)? noInternet,
+    required TResult orElse(),
+  }) {
+    if (noInternet != null) {
+      return noInternet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoInternet<Model> implements NetworkResponse<Model> {
+  const factory NoInternet(final String message, final int statusCode) =
+      _$NoInternetImpl<Model>;
+
+  String get message;
+  int get statusCode;
+  @JsonKey(ignore: true)
+  _$$NoInternetImplCopyWith<Model, _$NoInternetImpl<Model>> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -21,6 +21,7 @@ ApiErrorMessage _$ApiErrorMessageFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiErrorMessage {
   String? get errorMessage => throw _privateConstructorUsedError;
+  int? get statusCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $ApiErrorMessageCopyWith<$Res> {
           ApiErrorMessage value, $Res Function(ApiErrorMessage) then) =
       _$ApiErrorMessageCopyWithImpl<$Res, ApiErrorMessage>;
   @useResult
-  $Res call({String? errorMessage});
+  $Res call({String? errorMessage, int? statusCode});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$ApiErrorMessageCopyWithImpl<$Res, $Val extends ApiErrorMessage>
   @override
   $Res call({
     Object? errorMessage = freezed,
+    Object? statusCode = freezed,
   }) {
     return _then(_value.copyWith(
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$ApiErrorMessageImplCopyWith<$Res>
       __$$ApiErrorMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? errorMessage});
+  $Res call({String? errorMessage, int? statusCode});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$ApiErrorMessageImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? errorMessage = freezed,
+    Object? statusCode = freezed,
   }) {
     return _then(_$ApiErrorMessageImpl(
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -97,17 +108,19 @@ class __$$ApiErrorMessageImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ApiErrorMessageImpl implements _ApiErrorMessage {
-  const _$ApiErrorMessageImpl({this.errorMessage});
+  const _$ApiErrorMessageImpl({this.errorMessage, this.statusCode});
 
   factory _$ApiErrorMessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiErrorMessageImplFromJson(json);
 
   @override
   final String? errorMessage;
+  @override
+  final int? statusCode;
 
   @override
   String toString() {
-    return 'ApiErrorMessage(errorMessage: $errorMessage)';
+    return 'ApiErrorMessage(errorMessage: $errorMessage, statusCode: $statusCode)';
   }
 
   @override
@@ -116,12 +129,14 @@ class _$ApiErrorMessageImpl implements _ApiErrorMessage {
         (other.runtimeType == runtimeType &&
             other is _$ApiErrorMessageImpl &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode => Object.hash(runtimeType, errorMessage, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -139,14 +154,17 @@ class _$ApiErrorMessageImpl implements _ApiErrorMessage {
 }
 
 abstract class _ApiErrorMessage implements ApiErrorMessage {
-  const factory _ApiErrorMessage({final String? errorMessage}) =
-      _$ApiErrorMessageImpl;
+  const factory _ApiErrorMessage(
+      {final String? errorMessage,
+      final int? statusCode}) = _$ApiErrorMessageImpl;
 
   factory _ApiErrorMessage.fromJson(Map<String, dynamic> json) =
       _$ApiErrorMessageImpl.fromJson;
 
   @override
   String? get errorMessage;
+  @override
+  int? get statusCode;
   @override
   @JsonKey(ignore: true)
   _$$ApiErrorMessageImplCopyWith<_$ApiErrorMessageImpl> get copyWith =>

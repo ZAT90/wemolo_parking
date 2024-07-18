@@ -1,5 +1,5 @@
 import 'package:wemolo_parking/core/network/models/network_response.dart';
-import 'package:wemolo_parking/core/utils/error/api_error_message.dart';
+import 'package:wemolo_parking/core/utils/models/error/api_error_message.dart';
 // bool isNullOrEmpty(dynamic value) {
 //   if (value == null) {
 //     return true;
@@ -25,29 +25,32 @@ import 'package:wemolo_parking/core/utils/error/api_error_message.dart';
 
 // bool isNotNullOrEmpty(dynamic o) =>
 //   o != null || "" != o;
-extension StringExtensions on String { 
-  String capitalize() { 
-    return "${this[0].toUpperCase()}${this.substring(1)}"; 
-  } 
-} 
+extension StringExtensions on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${this.substring(1)}";
+  }
+}
 
 Future<dynamic> handleNetworkResponse<T>(NetworkResponse response) async {
   return response.maybeWhen(
     ok: (data) => data,
     orElse: () => throw const ApiErrorMessage(errorMessage: 'api error'),
-    badRequest: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
-    noData: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
-    notFound: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
-    conflict: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
-    invalidParameters: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
-    noAccess: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
-    noAuth: (message) =>
-        throw ApiErrorMessage(errorMessage: 'api error: $message'),
+    badRequest: (message, statusCode) => throw ApiErrorMessage(
+        errorMessage: 'api error: $message', statusCode: statusCode),
+    noData: (message, statusCode) => throw ApiErrorMessage(
+        errorMessage: 'api error: $message', statusCode: statusCode),
+    notFound: (message, statusCode) => throw ApiErrorMessage(
+        errorMessage: 'api error: $message', statusCode: statusCode),
+    conflict: (message, statusCode) => throw ApiErrorMessage(
+        errorMessage: 'api error: $message', statusCode: statusCode),
+    invalidParameters: (message) => throw ApiErrorMessage(
+      errorMessage: 'api error: $message',
+    ),
+    noAccess: (message, statusCode) => throw ApiErrorMessage(
+        errorMessage: 'api error: $message', statusCode: statusCode),
+    noAuth: (message, statusCode) => throw ApiErrorMessage(
+        errorMessage: 'api error: $message', statusCode: statusCode),
+    noInternet: (message, statusCode) =>
+        throw ApiErrorMessage(errorMessage: message, statusCode: statusCode),
   );
 }
