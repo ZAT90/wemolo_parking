@@ -4,6 +4,7 @@ import 'package:wemolo_parking/core/utils/logger.dart';
 import 'package:wemolo_parking/screens/dashboard/data/model/request/request_body_parking/request_body_parking.dart';
 import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_distincts/response_body_distincts.dart';
 import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_parking/response_body_parking.dart';
+import 'package:wemolo_parking/screens/dashboard/domain/usecases/get_distinct_data_usecase.dart';
 import 'package:wemolo_parking/screens/dashboard/domain/usecases/get_parking_data_usecase.dart';
 
 part 'dashboard_state.dart';
@@ -12,6 +13,7 @@ part 'dashboard_bloc.freezed.dart';
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final GetParkingDataUseCase getParkingDataUseCase;
+  final GetDistinctDataUseCase getDistinctDatauseCase;
   int offset = 0;
   int limit = 5;
   List<GetAllParkingLot> summaryParkingList = [];
@@ -21,7 +23,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   List<String> selectedChoiceOfuser = [];
   List<DistinctStatus> selectedDistinctStatuses = [];
   List<DistinctType> selectedDistinctTypes = [];
-  DashboardBloc(this.getParkingDataUseCase)
+  DashboardBloc(this.getParkingDataUseCase, this.getDistinctDatauseCase)
       : super(const DashboardState.initial()) {
     on<DashboardEvent>((events, emit) async {
       await events.when(
@@ -43,7 +45,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         callingDistinctData: () async {
           logger.d('selectedChoiceOfuser: $selectedChoiceOfuser');
           emit(const DashboardState.loadDistinctInit());
-          final distinctData = await getParkingDataUseCase.getDistinctData();
+          final distinctData = await getDistinctDatauseCase.getDistinctData();
 
           distinctData.fold((error) => null, (respDistinct) {
             distinctStatuses.clear();
@@ -72,8 +74,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       if (selectedChoiceOfuser.contains('good'.toLowerCase())) {
         summaryListToFilter =
             summaryListToFilter.where((element) => element.isLiked!).toList();
-      } 
-      else if (selectedChoiceOfuser.contains('bad'.toLowerCase())) {
+      } else if (selectedChoiceOfuser.contains('bad'.toLowerCase())) {
         summaryListToFilter =
             summaryListToFilter.where((element) => !element.isLiked!).toList();
       }

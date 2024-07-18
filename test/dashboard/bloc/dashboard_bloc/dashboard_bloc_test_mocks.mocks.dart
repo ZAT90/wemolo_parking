@@ -7,14 +7,18 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:wemolo_parking/screens/dashboard/data/model/request/request_body_parking/request_body_parking.dart'
-    as _i7;
-import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_distincts/response_body_distincts.dart'
-    as _i8;
-import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_parking/response_body_parking.dart'
+import 'package:wemolo_parking/core/utils/models/error/api_error_message.dart'
     as _i6;
+import 'package:wemolo_parking/screens/dashboard/data/model/request/request_body_parking/request_body_parking.dart'
+    as _i8;
+import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_distincts/response_body_distincts.dart'
+    as _i10;
+import 'package:wemolo_parking/screens/dashboard/data/model/response/response_body_parking/response_body_parking.dart'
+    as _i7;
 import 'package:wemolo_parking/screens/dashboard/domain/repositories/dashboard_repository.dart'
     as _i2;
+import 'package:wemolo_parking/screens/dashboard/domain/usecases/get_distinct_data_usecase.dart'
+    as _i9;
 import 'package:wemolo_parking/screens/dashboard/domain/usecases/get_parking_data_usecase.dart'
     as _i4;
 
@@ -71,39 +75,62 @@ class MockGetParkingDataUseCase extends _i1.Mock
       ) as _i2.DashboardRepository);
 
   @override
-  _i5.Future<_i3.Either<dynamic, _i6.ResponseBodyParking>> getParkingData(
-          _i7.RequestBodyParking? requestBodyParking) =>
+  _i5.Future<
+      _i3.Either<_i6.ApiErrorMessage, _i7.ResponseBodyParking>> getParkingData(
+          _i8.RequestBodyParking? requestBodyParking) =>
       (super.noSuchMethod(
         Invocation.method(
           #getParkingData,
           [requestBodyParking],
         ),
-        returnValue:
-            _i5.Future<_i3.Either<dynamic, _i6.ResponseBodyParking>>.value(
-                _FakeEither_1<dynamic, _i6.ResponseBodyParking>(
+        returnValue: _i5.Future<
+                _i3.Either<_i6.ApiErrorMessage, _i7.ResponseBodyParking>>.value(
+            _FakeEither_1<_i6.ApiErrorMessage, _i7.ResponseBodyParking>(
           this,
           Invocation.method(
             #getParkingData,
             [requestBodyParking],
           ),
         )),
-      ) as _i5.Future<_i3.Either<dynamic, _i6.ResponseBodyParking>>);
+      ) as _i5
+          .Future<_i3.Either<_i6.ApiErrorMessage, _i7.ResponseBodyParking>>);
+}
+
+/// A class which mocks [GetDistinctDataUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetDistinctDataUseCase extends _i1.Mock
+    implements _i9.GetDistinctDataUseCase {
+  MockGetDistinctDataUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
 
   @override
-  _i5.Future<_i3.Either<dynamic, _i8.ResponseBodyDistincts>>
+  _i2.DashboardRepository get dashboardRepository => (super.noSuchMethod(
+        Invocation.getter(#dashboardRepository),
+        returnValue: _FakeDashboardRepository_0(
+          this,
+          Invocation.getter(#dashboardRepository),
+        ),
+      ) as _i2.DashboardRepository);
+
+  @override
+  _i5.Future<_i3.Either<_i6.ApiErrorMessage, _i10.ResponseBodyDistincts>>
       getDistinctData() => (super.noSuchMethod(
             Invocation.method(
               #getDistinctData,
               [],
             ),
-            returnValue: _i5
-                .Future<_i3.Either<dynamic, _i8.ResponseBodyDistincts>>.value(
-                _FakeEither_1<dynamic, _i8.ResponseBodyDistincts>(
+            returnValue: _i5.Future<
+                    _i3.Either<_i6.ApiErrorMessage,
+                        _i10.ResponseBodyDistincts>>.value(
+                _FakeEither_1<_i6.ApiErrorMessage, _i10.ResponseBodyDistincts>(
               this,
               Invocation.method(
                 #getDistinctData,
                 [],
               ),
             )),
-          ) as _i5.Future<_i3.Either<dynamic, _i8.ResponseBodyDistincts>>);
+          ) as _i5.Future<
+              _i3.Either<_i6.ApiErrorMessage, _i10.ResponseBodyDistincts>>);
 }

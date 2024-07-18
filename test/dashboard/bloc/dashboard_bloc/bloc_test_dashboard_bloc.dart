@@ -7,11 +7,14 @@ import 'dashboard_bloc_test_mocks.mocks.dart';
 
 void main() {
   late MockGetParkingDataUseCase mockGetParkingDataUseCase;
+  late MockGetDistinctDataUseCase mockGetDistinctDataUseCase;
   late DashboardBloc dashboardBloc;
 
   setUp(() {
     mockGetParkingDataUseCase = MockGetParkingDataUseCase();
-    dashboardBloc = DashboardBloc(mockGetParkingDataUseCase);
+    mockGetDistinctDataUseCase = MockGetDistinctDataUseCase();
+    dashboardBloc =
+        DashboardBloc(mockGetParkingDataUseCase, mockGetDistinctDataUseCase);
   });
 
   tearDown(() {

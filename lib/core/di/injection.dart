@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wemolo_parking/core/di/injection.config.dart';
 import 'package:wemolo_parking/screens/dashboard/domain/repositories/dashboard_repository.dart';
+import 'package:wemolo_parking/screens/dashboard/domain/usecases/get_distinct_data_usecase.dart';
 import 'package:wemolo_parking/screens/dashboard/domain/usecases/get_parking_data_usecase.dart';
 import 'package:wemolo_parking/screens/dashboard/presentation/blocs/dashboard/dashboard_bloc.dart';
 
@@ -21,19 +22,9 @@ abstract class RegisterModule {
   // Register all use cases
   GetParkingDataUseCase get getPostsUseCase =>
       GetParkingDataUseCase(getIt<DashboardRepository>());
+  GetDistinctDataUseCase get getDistinctDataUseCase =>
+      GetDistinctDataUseCase(getIt<DashboardRepository>());
   // Register All Blocs
-  DashboardBloc get dashboardBloc =>
-      DashboardBloc(getIt<GetParkingDataUseCase>());
-  // // Register all use cases
-  // GetPostsUseCase get getPostsUseCase =>
-  //     GetPostsUseCase(getIt<HomeRepository>());
-  // GetCommentsUseCase get getCommentsUseCase =>
-  //     GetCommentsUseCase(getIt<CommentRephow ository>());
-  //  // Register All Blocs
-  // HomeBloc get homeBloc => HomeBloc(
-  //       getIt<GetPostsUseCase>(),
-  //     );
-  // CommentBloc get commentBloc => CommentBloc(
-  //       getIt<GetCommentsUseCase>(),
-  //     );
+  DashboardBloc get dashboardBloc => DashboardBloc(
+      getIt<GetParkingDataUseCase>(), getIt<GetDistinctDataUseCase>());
 }

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:wemolo_parking/core/utils/error/api_error_message.dart';
+import 'package:wemolo_parking/core/utils/models/error/api_error_message.dart';
 import 'package:wemolo_parking/core/utils/type_defs.dart';
 import 'package:wemolo_parking/screens/dashboard/data/data_sources/dashboard_remote_data_source.dart';
 import 'package:wemolo_parking/screens/dashboard/data/model/request/request_body_parking/request_body_parking.dart';

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:wemolo_parking/core/utils/error/api_error_message.dart';
+import 'package:wemolo_parking/core/utils/models/error/api_error_message.dart';
 
 typedef ResultFuture<T> = Future<Either<ApiErrorMessage, T>>;
 
