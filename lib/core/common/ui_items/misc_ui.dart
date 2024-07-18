@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wemolo_parking/core/constants/ui_constants.dart';
 
 void showSpinnerDialog(BuildContext context) {
   showDialog(
