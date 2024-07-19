@@ -952,21 +952,6 @@ class MockNetworkService extends _i1.Mock implements _i11.NetworkService {
       ) as _i9.Future<_i7.NetworkResponse<T>>);
 
   @override
-  String testMethod(String? value) => (super.noSuchMethod(
-        Invocation.method(
-          #testMethod,
-          [value],
-        ),
-        returnValue: _i12.dummyValue<String>(
-          this,
-          Invocation.method(
-            #testMethod,
-            [value],
-          ),
-        ),
-      ) as String);
-
-  @override
   _i9.Future<_i7.NetworkResponse<T>> post<T>({
     required String? path,
     dynamic requestBody,

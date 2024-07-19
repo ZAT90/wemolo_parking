@@ -26,5 +26,5 @@ abstract class RegisterModule {
       GetDistinctDataUseCase(getIt<DashboardRepository>());
   // Register All Blocs
   DashboardBloc get dashboardBloc => DashboardBloc(
-      getIt<GetParkingDataUseCase>(), getIt<GetDistinctDataUseCase>());
+      getPostsUseCase, getDistinctDataUseCase);
 }
