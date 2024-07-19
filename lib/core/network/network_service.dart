@@ -239,11 +239,6 @@ class NetworkService implements NetworkMethods {
     );
   }
 
-  String testMethod(String value) {
-    print('value: $value');
-    return value;
-  }
-
   @override
   Future<NetworkResponse<T>> post<T>(
       {required String path, requestBody, Map<String, dynamic>? queryParams}) {
